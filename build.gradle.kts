@@ -122,7 +122,7 @@ tasks {
 }
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.amihaiemil.web", "eo-yaml", "6.0.0")
+    implementation("org.yaml", "snakeyaml", "1.29")
 }
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
