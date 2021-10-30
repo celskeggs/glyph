@@ -1,18 +1,15 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.celskeggs.glyph</id>
-    <name>glyph</name>
+    <name>Glyph</name>
     <vendor>celskeggs</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.celskeggs.glyph.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.celskeggs.glyph.services.MyProjectService"/>
+        <moduleType id="GLYPH_MODULE" implementationClass="com.github.celskeggs.glyph.GlyphModuleType" />
+        <fileType name="Glyph Source" implementationClass="com.github.celskeggs.glyph.GlyphSourceType"
+                  fieldName="INSTANCE" language="Glyph" extensions="gf" />
+        <fileEditorProvider implementation="com.github.celskeggs.glyph.GlyphEditorProvider" />
     </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.celskeggs.glyph.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>

@@ -7,7 +7,7 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.5.30"
+    kotlin("jvm") version "1.5.31"
     // Gradle IntelliJ Plugin
     id("org.jetbrains.intellij") version "1.1.6"
     // Gradle Changelog Plugin
@@ -119,4 +119,16 @@ tasks {
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
     }
+}
+dependencies {
+    implementation(kotlin("stdlib-jdk8"))
+    implementation("com.amihaiemil.web", "eo-yaml", "6.0.0")
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }
